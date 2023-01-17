@@ -1,6 +1,7 @@
 const app = require('express')();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
+const path = require("path");
 
 // Add messages when sockets open and close connections
 io.on('connection', socket => {
@@ -16,7 +17,10 @@ setInterval(() => {
 }, 1000);
 
 // Show the index.html by default
-app.get('/', (req, res) => res.sendFile('index.html'));
+app.get('/', (req, res) => {
+  console.log(`[${req.socket.id}] request for index.html`);
+  res.sendFile(__dirname + '/index.html');
+});
 
 // Start the express server
 http.listen(3000, function(){

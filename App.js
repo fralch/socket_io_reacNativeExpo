@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from "react-native";
 import io from "socket.io-client";
 
 // Replace this URL with your own socket-io host, or start the backend locally
-const socketEndpoint = "http://localhost:3000";
+const socketEndpoint = "http://127.0.0.1:3000";
 
 export default function App() {
   const [hasConnection, setConnection] = useState(false);
@@ -35,7 +35,7 @@ export default function App() {
             Connecting to {socketEndpoint}...
           </Text>
           <Text style={styles.footnote}>
-            Make sure the backend is started and reachable
+            Make sure the backend is started and reachable :/
           </Text>
         </>
       )}
